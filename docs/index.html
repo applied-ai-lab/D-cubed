@@ -105,81 +105,6 @@
   </div>
 </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -187,65 +112,237 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-            <p>
-            Dexterous manipulation of deformable objects with robotic hands is essential for various real-world applications that are challenging for standard parallel grippers.
-            Traditional trajectory optimisation approaches often struggle to solve such tasks due to the large search space to be covered and the limited task information available from a cost function. 
-            In this work, we propose D-Cubed, a novel trajectory optimisation method using a latent diffusion model (LDM) trained from a task-agnostic play dataset to solve dexterous deformable object manipulation tasks.
-            D-cubed learns a skill-latent space that encodes short-horizon actions in the play dataset using a VAE and trains the LDM to compose the skills into a long-horizon action trajectory seen in the dataset.
-            To optimise a trajectory for a target task, we introduce a novel gradient-free guided sampling method that adapts the Cross-Entropy method for the reverse diffusion process.
-            In particular, D-Cubed samples a small number of noisy skill trajectories using the LDM for exploration and evaluate the trajectories in simulation. 
-            Then, D-Cubed selects the trajectory with the lowest cost for the subsequent reverse process.
-            This effectively explores more promising solution areas and optimises for a target task over the reverse diffusion process.
-            Through empirical evaluation on a public benchmark of dexterous deformable object manipulation tasks, we demonstrate that D-Cubed outperforms traditional trajectory optimisation and competitive baseline approaches by a significant margin. We further demonstrate that trajectories found by D-cubed readily transfer to a real-world LEAP hand on a folding task.
-            </p>
+          <p>
+              Model-based RL is a promising approach for real-world robotics due to its improved sample efficiency and generalization capabilities compared to model-free RL. However, effective model-based RL solutions for vision-based real-world applications require bridging the sim-to-real gap for any world model learnt. Due to its significant computational cost, standard domain randomisation does not provide an effective solution to this problem. This paper proposes TWIST (Teacher-Student World Model Distillation for Sim-to-Real Transfer) to achieve efficient sim-to-real transfer of vision-based model-based RL using distillation. Specifically, TWIST leverages state observations as readily accessible, privileged information commonly garnered from a simulator to significantly accelerate sim-to-real transfer. Specifically, a teacher world model is trained efficiently on state information. At the same time, a matching dataset is collected of domain-randomised image observations. The teacher world model then supervises a student world model that takes the domain-randomised image observations as input. By distilling the learned latent dynamics model from the teacher to the student model, TWIST achieves efficient and effective sim-to-real transfer for vision-based model-based RL tasks. Experiments in simulated and real robotics tasks demonstrate that our approach outperforms naive domain randomisation and model-free methods in terms of sample efficiency and task performance of sim-to-real transfer.
+          </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered"> -->
+    <!--   <div class="column is-four-fifths"> -->
+    <!--     <h2 class="title is-3">Video</h2> -->
+    <!--     <div class="publication-video"> -->
+    <!--       <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&#38;amp;showinfo=0" -->
+    <!--               frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!-- </div> -->
+    <!--/ Paper video. -->
   </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Approach</h2>
 
+        <!-- Interpolating. -->
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/images/overview.png"
+                 class="interpolation-image"
+                 alt="Method overview."/>
+          </div>
+        <div class="content has-text-justified">
+          <p>
+              Our approach consists of three stages. Firstly, a teacher world model and its associated policy are trained from state observations, which are easily accessible privileged information in simulation. While training the teacher, a matching dataset of domain-randomized image observations is generated. Next, by leveraging the collected state and domain-randomized image observations, the teacher supervises a student world model by imitating the latent states of the world models. In particular, the student imitates the deterministic representation, prior, and posterior distribution of the teacher world model. Finally, we transfer the student world model and the policy to a real-world environment. The student world model encodes the current image observation to latent representation with aggregation of previous latent states, and that is used as input to the policy for execution.
+          </p>
+        </div>
+        </div>
+        <br/>
+      </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Interpolating. -->
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/images/imagined_trajectory_distillation.gif"
+                 class="interpolation-image"
+                 alt="Generating imagined trajectories for distillation."/>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+              To better match the representations between the student and teacher world model, we further derive a training signal for distribution alignment by matching imagined rollouts in both the teacher and student models. Firstly, an imagined trajectory is generated using the learned policy with the teacher model. We also collect an imagined trajectory in the student model by replaying the same sequence of actions used for trajectory imagination in the teacher. Then, we align the deterministic representation and prior distribution in the trajectories generated by the teacher and student.
+          </p>
+        </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Simulated Experiments</h3>
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/images/simulated_results.png"
+                 class="interpolation-image"
+                 alt="Generating imagined trajectories for distillation."/>
+          </div>
+        <div class="content has-text-justified">
+          <p>
+              Our preliminary experiments conducted in DMControl suite show that TWIST outperforms baseline methods including Dreamer with naive domain randomization and model-free RL in both sim-to-sim and sim-to-real experiments by a significant margin.
+          </p>
+        </div>
+        </div>
+        <br/>
+      </div>
+      <div class="column is-full-width">
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Real-world Experiments</h3>
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/images/real-world_results.png"
+                 class="interpolation-image"
+                 alt="Generating imagined trajectories for distillation."/>
+          </div>
+        <div class="content has-text-justified">
+          <p>
+              In our real-world experiments, we demonstrate that TWIST is capable of solving manipulation tasks in the real world with improved sample efficiency.  On the other hand, baseline methods struggle to learn a policy efficiently with a limited amount of samples in simulation, thus these methods often fail to solve the task in the real world.
+          </p>
+        </div>
+        </div>
+        <br/>
+
+    <h3 class="title is-4">Qualitative Results</h3>
+    <div class="column">
+      <div class="content has-text-centered">
+        <h4 class="title is-5">Push</h4>
+      </div>
+    </div>
     <div class="columns is-centered">
 
       <!-- Visual Effects. -->
       <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
+        <div class="content has-text-centered">
+          <!-- <h2 class="title is-3">Visual Effects</h2> -->
           <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
+              <source src="./static/videos/push_twist.mp4"
                     type="video/mp4">
           </video>
+          <p>TWIST (Our method)</p>
         </div>
       </div>
       <!--/ Visual Effects. -->
 
       <!-- Matting. -->
       <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
+        <!-- <h2 class="title is-3">Matting</h2> -->
+        <div class="columns is-centered has-text-centered">
           <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
+              <source src="./static/videos/push_dreamer_state_recon.mp4"
                       type="video/mp4">
             </video>
+          <p>Dreamer State Recon.</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="column">
+        <!-- <h2 class="title is-3">Matting</h2> -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/push_dreamer_dr.mp4"
+                      type="video/mp4">
+            </video>
+          <p>Dreamer w/ DR</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="column">
+        <!-- <h2 class="title is-3">Matting</h2> -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/push_asymmetric_sac.mp4"
+                      type="video/mp4">
+            </video>
+          <p>Asymmetric SAC</p>
           </div>
 
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
+
+    <div class="column">
+      <div class="content has-text-centered">
+        <h4 class="title is-5">Lift</h4>
+      </div>
+    </div>
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content has-text-centered">
+          <!-- <h2 class="title is-3">Visual Effects</h2> -->
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/lift_twist.mp4"
+                    type="video/mp4">
+          </video>
+          <p>TWIST (Our method)</p>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <!-- <h2 class="title is-3">Matting</h2> -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/lift_dreamer_state_recon.mp4"
+                      type="video/mp4">
+            </video>
+          <p>Dreamer State Recon.</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="column">
+        <!-- <h2 class="title is-3">Matting</h2> -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/lift_dreamer_dr.mp4"
+                      type="video/mp4">
+            </video>
+          <p>Dreamer w/ DR</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="column">
+        <!-- <h2 class="title is-3">Matting</h2> -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/lift_asymmetric_sac.mp4"
+                      type="video/mp4">
+            </video>
+          <p>Asymmetric SAC</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+    <!--/ Animation. -->
+
 
   </div>
 </section>
@@ -262,32 +359,12 @@
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+          <p>Based on the awesome open source template <a href="https://github.com/nerfies/nerfies.github.io">from here.</a>
           </p>
         </div>
       </div>
