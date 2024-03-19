@@ -63,14 +63,15 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">University of Oxford,</span>
+            <span class="author-block">Applied AI Lab (A2I),</span>
+            <span class="author-block">University of Oxford</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -79,7 +80,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -89,12 +90,12 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming soon)</span>
                   </a>
               </span>
             </div>
@@ -105,6 +106,25 @@
   </div>
 </section>
 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <div class="columns is-vcentered is-centered">
+            <img src="./static/videos/action_render.gif"
+                 class="interpolation-image"
+                 alt="D-Cubed Overview" width='40%'/>
+            <img src="./static/videos/real_crop.gif"
+                 class="interpolation-image"
+                 alt="D-Cubed Overview" width='40%'/>
+        </div>
+      <h2 class="subtitle has-text-centered">
+          <em>D-Cubed</em> optimises a trajectory for dexterous deformable object manipualtion tasks.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -113,7 +133,15 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-              Model-based RL is a promising approach for real-world robotics due to its improved sample efficiency and generalization capabilities compared to model-free RL. However, effective model-based RL solutions for vision-based real-world applications require bridging the sim-to-real gap for any world model learnt. Due to its significant computational cost, standard domain randomisation does not provide an effective solution to this problem. This paper proposes TWIST (Teacher-Student World Model Distillation for Sim-to-Real Transfer) to achieve efficient sim-to-real transfer of vision-based model-based RL using distillation. Specifically, TWIST leverages state observations as readily accessible, privileged information commonly garnered from a simulator to significantly accelerate sim-to-real transfer. Specifically, a teacher world model is trained efficiently on state information. At the same time, a matching dataset is collected of domain-randomised image observations. The teacher world model then supervises a student world model that takes the domain-randomised image observations as input. By distilling the learned latent dynamics model from the teacher to the student model, TWIST achieves efficient and effective sim-to-real transfer for vision-based model-based RL tasks. Experiments in simulated and real robotics tasks demonstrate that our approach outperforms naive domain randomisation and model-free methods in terms of sample efficiency and task performance of sim-to-real transfer.
+              Mastering dexterous robotic manipulation of deformable objects is vital for overcoming the limitations of parallel grippers in real-world applications
+Current trajectory optimisation approaches often struggle to solve such tasks due to the large search space to be covered and the limited task information available from a cost function. 
+In this work, we propose <em>D-Cubed</em>, a novel trajectory optimisation method using a latent diffusion model (LDM) trained from a task-agnostic play dataset to solve dexterous deformable object manipulation tasks.
+<em>D-Cubed</em> learns a skill-latent space that encodes short-horizon actions in the play dataset using a VAE and trains a LDM to compose the skill latents into a skill trajectory, representing a long-horizon action trajectory in the dataset.
+To optimise a trajectory for a target task, we introduce a novel gradient-free guided sampling method that adapts the Cross-Entropy method for the reverse diffusion process.
+In particular, <em>D-Cubed</em> samples a small number of noisy skill trajectories using the LDM for exploration and evaluates the trajectories in simulation. 
+Then, <em>D-Cubed</em> selects the trajectory with the lowest cost for the subsequent reverse process.
+This effectively explores promising solution areas and optimises the sampled trajectories towards a target task throughout the reverse diffusion process.
+Through empirical evaluation on a public benchmark of dexterous deformable object manipulation tasks, we demonstrate that \ourmethod outperforms traditional trajectory optimisation and competitive baseline approaches by a significant margin. We further demonstrate that trajectories found by \ourmethod readily transfer to a real-world LEAP hand on a folding task.
           </p>
         </div>
       </div>
@@ -143,13 +171,13 @@
 
         <!-- Interpolating. -->
         <div class="columns is-vcentered is-centered">
-            <img src="./static/images/overview.png"
+            <img src="./static/images/teaser.png"
                  class="interpolation-image"
-                 alt="Method overview."/>
-          </div>
+                 alt="D-Cubed Overview" width='60%'/>
+        </div>
         <div class="content has-text-justified">
           <p>
-              Our approach consists of three stages. Firstly, a teacher world model and its associated policy are trained from state observations, which are easily accessible privileged information in simulation. While training the teacher, a matching dataset of domain-randomized image observations is generated. Next, by leveraging the collected state and domain-randomized image observations, the teacher supervises a student world model by imitating the latent states of the world models. In particular, the student imitates the deterministic representation, prior, and posterior distribution of the teacher world model. Finally, we transfer the student world model and the policy to a real-world environment. The student world model encodes the current image observation to latent representation with aggregation of previous latent states, and that is used as input to the policy for execution.
+              We propose D-Cubed, Latent Diffusion for Trajectory Optimisation in Dexterous Deformable Manipulation. D-Cubed is a novel trajectory optimisation approach that leverages a latent diffusion model (LDM) trained on a task-agnostic play dataset of a robot hand that contains various representative hand motions, such as closing and opening the hand, and moving individual fingers.
           </p>
         </div>
         </div>
@@ -159,14 +187,16 @@
       <div class="column is-full-width">
         <!-- Interpolating. -->
         <div class="columns is-vcentered is-centered">
-            <img src="./static/images/imagined_trajectory_distillation.gif"
+            <img src="./static/images/method.png"
                  class="interpolation-image"
                  alt="Generating imagined trajectories for distillation."/>
         </div>
         <div class="content has-text-justified">
           <p>
-              To better match the representations between the student and teacher world model, we further derive a training signal for distribution alignment by matching imagined rollouts in both the teacher and student models. Firstly, an imagined trajectory is generated using the learned policy with the teacher model. We also collect an imagined trajectory in the student model by replaying the same sequence of actions used for trajectory imagination in the teacher. Then, we align the deterministic representation and prior distribution in the trajectories generated by the teacher and student.
-          </p>
+              (1) A VAE is trained to learn a skill latent representation by reconstructing a short-horizon action sequence randomly sampled from the task-agnostic play dataset.
+              (2) A latent diffusion model (LDM) is trained to compose skills into a skill trajectory, representing a long-horizon action trajectory sampled from the dataset. The LDM, capable of generative diverse skill trajectories, effectively facilitates exploration in the large state space of dexterous deformable object manipulation tasks.
+              (3) During trajectory optimisation, the LDM generates a small number of skill trajectories. These trajectories are evaluated in a simulator, and the best sequence, characterised by achieving the minimum cost, is selected for the subsequent reverse process.
+        </p>
         </div>
         </div>
         <br/>
@@ -185,36 +215,21 @@
         <h2 class="title is-3">Results</h2>
 
         <!-- Interpolating. -->
-        <h3 class="title is-4">Simulated Experiments</h3>
+        <h3 class="title is-4">Qualitative Experiments</h3>
         <div class="columns is-vcentered is-centered">
-            <img src="./static/images/simulated_results.png"
+            <img src="./static/images/qualitative_result.png"
                  class="interpolation-image"
                  alt="Generating imagined trajectories for distillation."/>
           </div>
         <div class="content has-text-justified">
           <p>
-              Our preliminary experiments conducted in DMControl suite show that TWIST outperforms baseline methods including Dreamer with naive domain randomization and model-free RL in both sim-to-sim and sim-to-real experiments by a significant margin.
+              The averaged normalised improved the Earth-Mover distance (EMD) and standard deviation is reported for each method.
           </p>
         </div>
         </div>
         <br/>
       </div>
-      <div class="column is-full-width">
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Real-world Experiments</h3>
-        <div class="columns is-vcentered is-centered">
-            <img src="./static/images/real-world_results.png"
-                 class="interpolation-image"
-                 alt="Generating imagined trajectories for distillation."/>
-          </div>
-        <div class="content has-text-justified">
-          <p>
-              In our real-world experiments, we demonstrate that TWIST is capable of solving manipulation tasks in the real world with improved sample efficiency.  On the other hand, baseline methods struggle to learn a policy efficiently with a limited amount of samples in simulation, thus these methods often fail to solve the task in the real world.
-          </p>
-        </div>
-        </div>
         <br/>
-
     <h3 class="title is-4">Qualitative Results</h3>
     <div class="column">
       <div class="content has-text-centered">
@@ -275,70 +290,6 @@
           </div>
 
         </div>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="content has-text-centered">
-        <h4 class="title is-5">Lift</h4>
-      </div>
-    </div>
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content has-text-centered">
-          <!-- <h2 class="title is-3">Visual Effects</h2> -->
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/lift_twist.mp4"
-                    type="video/mp4">
-          </video>
-          <p>TWIST (Our method)</p>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <!-- <h2 class="title is-3">Matting</h2> -->
-        <div class="columns is-centered has-text-centered">
-          <div class="column content">
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/lift_dreamer_state_recon.mp4"
-                      type="video/mp4">
-            </video>
-          <p>Dreamer State Recon.</p>
-          </div>
-
-        </div>
-      </div>
-      <div class="column">
-        <!-- <h2 class="title is-3">Matting</h2> -->
-        <div class="columns is-centered has-text-centered">
-          <div class="column content">
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/lift_dreamer_dr.mp4"
-                      type="video/mp4">
-            </video>
-          <p>Dreamer w/ DR</p>
-          </div>
-
-        </div>
-      </div>
-      <div class="column">
-        <!-- <h2 class="title is-3">Matting</h2> -->
-        <div class="columns is-centered has-text-centered">
-          <div class="column content">
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/lift_asymmetric_sac.mp4"
-                      type="video/mp4">
-            </video>
-          <p>Asymmetric SAC</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
       </div>
     </div>
     <!--/ Animation. -->
